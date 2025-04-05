@@ -36,7 +36,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://portfolio-1-66vd.onrender.com';
     console.log('API URL:', apiUrl);
 
     // Validate email
