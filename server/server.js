@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import projectRoutes from './routes/projectRoutes.js';
 import contactRoutes from './routes/contactRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -11,12 +13,12 @@ const app = express();
 
 // CORS Configuration
 app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
+  origin: '*', // Render pe allow all origins or specific frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-app.use('/images', express.static('public/images')); // Serve images
+app.use('/images', express.static('public/images'));
 app.use(express.json());
 
 // Routes
@@ -47,21 +49,21 @@ const seedProjects = async () => {
         description: 'A web app built with MERN stack for task management.',
         liveLink: 'https://example.com/project1',
         githubLink: 'https://github.com/bhim027',
-        image: 'http://localhost:8000/images/project1.png',
+        image: '/images/project1.png',
       },
       {
         title: 'Project 2',
         description: 'An e-commerce platform with payment integration.',
         liveLink: 'https://example.com/project2',
         githubLink: 'https://github.com/bhim027',
-        image: 'http://localhost:8000/images/project2.png',
+        image: '/images/project2.png',
       },
       {
         title: 'Project 3',
         description: 'A portfolio website with modern design.',
         liveLink: 'https://example.com/project3',
         githubLink: 'https://github.com/bhim027',
-        image: 'http://localhost:8000/images/project3.png',
+        image: '/images/project3.png',
       },
     ];
     await Project.insertMany(projects);
@@ -71,8 +73,18 @@ const seedProjects = async () => {
 
 seedProjects();
 
+// ESM-compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve React build
+app.use(express.static(path.join(__dirname, '../build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
+
 // Start server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
