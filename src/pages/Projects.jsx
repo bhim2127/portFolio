@@ -14,8 +14,9 @@ function Projects() {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        console.log('API URL:', process.env.REACT_APP_API_URL); // Debug
-        const response = await axios.get('http://localhost:8000/api/projects');
+        const apiUrl = process.env.REACT_APP_API_URL || 'https://portfolio-1-66vd.onrender.com/api';
+        console.log('API URL:', apiUrl); // Debug
+        const response = await axios.get(`${apiUrl}/projects`);
         setProjects(response.data);
         setError(null);
       } catch (error) {
@@ -26,7 +27,7 @@ function Projects() {
           {
             id: 1,
             title: 'Project 1',
-            description: 'A web app built with MERN stack for task management.',
+            description: 'A web app built with MERN stack for Finance management.',
             liveLink: '#',
             githubLink: 'https://github.com/bhim027',
             image: '/images/project1.png',
@@ -34,7 +35,7 @@ function Projects() {
           {
             id: 2,
             title: 'Project 2',
-            description: 'An e-commerce platform with payment integration.',
+            description: 'Electricity Billing .',
             liveLink: '#',
             githubLink: 'https://github.com/bhim027',
             image: '/images/project2.png',
@@ -42,7 +43,7 @@ function Projects() {
           {
             id: 3,
             title: 'Project 3',
-            description: 'A portfolio website with modern design.',
+            description: 'Furniture Project',
             liveLink: '#',
             githubLink: 'https://github.com/bhim027',
             image: '/images/project3.png',
