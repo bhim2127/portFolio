@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/projects', projectRoutes);
-app.use('/contact', contactRoutes);
+app.use('/api/contact', contactRoutes);
 console.log('Contact routes loaded'); // Debug
 
 // MongoDB Connection
