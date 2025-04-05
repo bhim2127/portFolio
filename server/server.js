@@ -47,21 +47,21 @@ const seedProjects = async () => {
     const projects = [
       {
         title: 'Project 1',
-        description: 'A web app built with MERN stack for task management.',
+        description: 'A web app built with MERN stack for Finance management.',
         liveLink: 'https://example.com/project1',
         githubLink: 'https://github.com/bhim027',
         image: '/images/project1.png',
       },
       {
         title: 'Project 2',
-        description: 'An e-commerce platform with payment integration.',
+        description: 'Electricity Billing.',
         liveLink: 'https://example.com/project2',
         githubLink: 'https://github.com/bhim027',
         image: '/images/project2.png',
       },
       {
         title: 'Project 3',
-        description: 'A portfolio website with modern design.',
+        description: 'Furniture Project',
         liveLink: 'https://example.com/project3',
         githubLink: 'https://github.com/bhim027',
         image: '/images/project3.png',
