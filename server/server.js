@@ -24,6 +24,7 @@ app.use(express.json());
 // Routes
 app.use('/api/projects', projectRoutes);
 app.use('/api/contact', contactRoutes);
+console.log('Contact routes loaded'); // Debug
 
 // MongoDB Connection
 mongoose
