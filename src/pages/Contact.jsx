@@ -36,7 +36,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const apiUrl = process.env.REACT_APP_API_URL || 'https://portfolio-1-66vd.onrender.com';
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://portfolio-1-66vd.onrender.com/api';
     console.log('API URL:', apiUrl);
 
     // Validate email
@@ -50,7 +50,7 @@ function Contact() {
     console.log('Frontend validation passed for:', formData.email); // Debug
 
     try {
-      const response = await axios.post(`${apiUrl}/api/contact`, formData, {
+      const response = await axios.post(`${apiUrl}/contact`, formData, {
         headers: {
           'Content-Type': 'application/json',
         },
